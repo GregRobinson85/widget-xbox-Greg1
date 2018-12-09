@@ -277,7 +277,7 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
         		        // Got X button for spindle toggle
             			// See what we sent last time and send other cmd
             			if (that.lastSpindleCmd == "M5") {
-            				that.sendGcode("M3 S" + that.options.RPM);
+            				that.sendGcode("M3"); //("M3 S" + that.options.RPM)
             				that.lastSpindleCmd = "M3";
             			} else {
             				that.sendGcode("M5");
