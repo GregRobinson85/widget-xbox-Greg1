@@ -319,6 +319,13 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
         		    case 'START_FORWARD':
         		        chilipeppr.publish('/com-chilipeppr-widget-gcode/play', "");
         		        break;
+			    case 'LEFT_TOP_SHOULDER':
+        		        that.sendGcode("G28.2 x10");
+        		        break;
+			    case 'RIGHT_TOP_SHOULDER':
+        		         that.sendGcode("G28.2 y0");
+        		        break;
+					
         		    case 'SELECT_BACK':
         		        // Got start button.  enable/disable stick jogging
         		        that.joggingEnabled = !that.joggingEnabled;
