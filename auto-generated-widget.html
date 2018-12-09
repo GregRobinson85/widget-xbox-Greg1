@@ -391,7 +391,7 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
         
         sendCtr: 0,
         isPausedByPlanner: false, // keeps track of whether we've been told to pause sending by the planner buffer
-        stickJog: function(xVal, yVal) {
+        stickJog: function(yVal, xVal) {
             //console.log(xVal + " " + yVal);
             var maxFeed = this.options.RateXY;
             var deadZone = this.options.Deadzone / 100;
@@ -404,8 +404,8 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
                 
                 var gcode = "G91 G1";
                 gcode += " F" + feedRt;
-                gcode += " X" + yJog.toFixed(3);
-                gcode += " Y" + xJog.toFixed(3);
+                gcode += " X" + xJog.toFixed(3);
+                gcode += " Y" + yJog.toFixed(3);
                 gcode += "\nG90\n";
                 var jsonSend = {
                     D: gcode,
