@@ -404,8 +404,8 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
                 
                 var gcode = "G91 G1";
                 gcode += " F" + feedRt;
-                gcode += " X" + xJog.toFixed(3);
-                gcode += " Y" + yJog.toFixed(3);
+                gcode += " X" + yJog.toFixed(3);
+                gcode += " Y" + xJog.toFixed(3);
                 gcode += "\nG90\n";
                 var jsonSend = {
                     D: gcode,
