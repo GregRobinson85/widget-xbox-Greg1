@@ -329,6 +329,9 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
 			    case 'RIGHT_TOP_SHOULDER':
         		         that.sendGcode("G28.2 z0");
         		        break;
+					case 'LEFT_STICK':
+        			    that.sendGcode("%");
+        		        break;
 					
         		    case 'SELECT_BACK':
         		        // Got start button.  enable/disable stick jogging
