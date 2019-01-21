@@ -515,14 +515,14 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
         	
             $("#com-chilipeppr-widget-xbox-settings-container > .slider").each(function(){
                 if ( this.id == 'com-chilipeppr-widget-xbox-incjog' ) {
-        	        $(this).prev('span').text( this.value / 10 )
+        	        $(this).prev('span').text( this.value  )
         	    } else {
                     $(this).prev('span').text(this.value)
         	    }
             });
         	$('#com-chilipeppr-widget-xbox-settings-container > .slider').on("input", function(e) {
         	    if ( e.target.id == 'com-chilipeppr-widget-xbox-incjog' ) {
-        	        $(e.target).prev('span').text( $(e.target).val() / 10 )
+        	        $(e.target).prev('span').text( $(e.target).val() )
         	    } else {
                     $(e.target).prev('span').text( $(e.target).val() )
         	    }
