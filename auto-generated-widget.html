@@ -316,7 +316,7 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
         		    case 'DPAD_RIGHT':
         		        that.sendGcode("G91 G1 F" + that.options.RateXY + " Y" + (that.options.IncJog * 0.1) );
         			    that.sendGcode("G90");
-				console.log("dpad right"):
+				console.log("dpad right");
         		        break;
         		    case 'START_FORWARD':
         		        chilipeppr.publish('/com-chilipeppr-widget-gcode/play', "");
