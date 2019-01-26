@@ -277,7 +277,7 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
         		        // Got X button for spindle toggle
             			// See what we sent last time and send other cmd
             			if (that.lastSpindleCmd == "M5") {
-            				that.sendGcode("M3"); //("M3 S" + that.options.RPM)
+            				that.sendGcode("M3 S" + that.options.RPM);
             				that.lastSpindleCmd = "M3";
             			} else {
             				that.sendGcode("M5");
@@ -295,47 +295,25 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
             				that.lastCoolantCmd = "M7";
             			}
         		        break;
-					
-			    case 'RIGHT_BOTTOM_SHOULDER':
-        			    
-        			    that.sendGcode("G28.3 x0 y0 z0");
-        		        break;
-			    case 'LEFT_BOTTOM_SHOULDER':
-        			    
-        			    that.sendGcode("!");
-        		        break;
         		    case 'DPAD_UP':
-        			    /*that.sendGcode("G91 G1 F" + that.options.RateXY + " X" + (that.options.IncJog * -0.1) );
-        			    that.sendGcode("G90");*/
-					that.sendGcode("G91 G0"  " X" + (that.options.IncJog * -0.1) );
+        			    that.sendGcode("G91 G1 F" + that.options.RateXY + " Y" + (that.options.IncJog * 0.1) );
         			    that.sendGcode("G90");
-					
         		        break;
         		    case 'DPAD_DOWN':
-        		        that.sendGcode("G91 G1 F" + that.options.RateXY + " X" + (that.options.IncJog * 0.1) );
-        			    that.sendGcode("G90");
-        		        break;
-        		    case 'DPAD_LEFT':
         		        that.sendGcode("G91 G1 F" + that.options.RateXY + " Y" + (that.options.IncJog * -0.1) );
         			    that.sendGcode("G90");
         		        break;
+        		    case 'DPAD_LEFT':
+        		        that.sendGcode("G91 G1 F" + that.options.RateXY + " X" + (that.options.IncJog * -0.1) );
+        			    that.sendGcode("G90");
+        		        break;
         		    case 'DPAD_RIGHT':
-        		        that.sendGcode("G91 G1 F" + that.options.RateXY + " Y" + (that.options.IncJog * 0.1) );
+        		        that.sendGcode("G91 G1 F" + that.options.RateXY + " X" + (that.options.IncJog * 0.1) );
         			    that.sendGcode("G90");
         		        break;
         		    case 'START_FORWARD':
         		        chilipeppr.publish('/com-chilipeppr-widget-gcode/play', "");
         		        break;
-			    case 'LEFT_TOP_SHOULDER':
-        		        that.sendGcode("G28.2 x0 y0");
-        		        break;
-			    case 'RIGHT_TOP_SHOULDER':
-        		         that.sendGcode("G28.2 z0");
-        		        break;
-					case 'LEFT_STICK':
-        			    that.sendGcode("%");
-        		        break;
-					
         		    case 'SELECT_BACK':
         		        // Got start button.  enable/disable stick jogging
         		        that.joggingEnabled = !that.joggingEnabled;
@@ -345,7 +323,7 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
         		    default:
         		        chilipeppr.publish('/com-chilipeppr-elem-flashmsg/flashmsg', 
         		            "Xbox Controller Button Down", "Control: " + e.control, 500, true);
-        		}       
+        		}    
         	});
         	
         	gamepad.bind(Gamepad.Event.BUTTON_UP, function(e) {
@@ -1995,13 +1973,13 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
                         <h6 class="text-primary">Joystick Deadzone: </h6><span></span>%
                         <input type="range" min="0" max="100" value="0" class="slider" id="com-chilipeppr-widget-xbox-deadzone">
                         <h6 class="text-primary">Max Jog Rate (x/y): </h6> <span></span>
-                        <input type="range" min="1" max="20000" value="1" class="slider" id="com-chilipeppr-widget-xbox-ratexy">
+                        <input type="range" min="1" max="5000" value="1" class="slider" id="com-chilipeppr-widget-xbox-ratexy">
                         <h6 class="text-primary">Max Jog Rate (z): </h6> <span></span>
-                        <input type="range" min="1" max="20000" value="1" class="slider" id="com-chilipeppr-widget-xbox-ratez">
+                        <input type="range" min="1" max="5000" value="1" class="slider" id="com-chilipeppr-widget-xbox-ratez">
                         <h6 class="text-primary">Incremental Jog: </h6> <span></span>
                         <input type="range" min="1" max="50" value="1" class="slider" id="com-chilipeppr-widget-xbox-incjog">
                         <h6 class="text-primary">Spindle RPM: </h6> <span></span>
-                        <input type="range" min="1" max="26000" value="1" class="slider" id="com-chilipeppr-widget-xbox-rpm">
+                        <input type="range" min="1" max="20000" value="1" class="slider" id="com-chilipeppr-widget-xbox-rpm">
                     </div>
                 </div>
 
